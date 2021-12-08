@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-const { isCache, setCache } = require('./common/index');
-
+const { getCache, loginEnter, loginFn } = require('./common/index');
 const { Command } = require('commander');
 
 
@@ -13,8 +12,18 @@ program
 program.parse(process.argv);
 
 const options = program.opts();
-if (options.publish) {
-    console.log('发布')
-    if(isCache()) return;
-    setCache('123123');
+
+const publish = (op) => {
+  if (op.publish) {
+    const data = getCache();
+      // 有token
+      if(data) {
+        loginFn(JSON.parse(data));
+        return;
+      };
+      // 无token
+      loginEnter();
+  };
 };
+
+publish(options);

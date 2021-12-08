@@ -5,7 +5,8 @@
   "license": "MIT",
   "bin": "index.js",
   "dependencies": {
+    "axios": "^0.24.0",
     "commander": "^8.3.0",
-    "node-cache": "^5.1.2"
+    "inquirer": "^8.2.0"
   }
 }
