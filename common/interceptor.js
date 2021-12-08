@@ -13,6 +13,12 @@ instance.interceptors.request.use(function (config) {
       appId: 8,
       ...config.data
     },
+    headers: {
+      ...config.headers,
+      post: {
+        "Content-Type": "application/json",
+      }
+    },
     transformResponse: (res, headers) => {
       headers['content-type'] = 'application/json';
       return res;
